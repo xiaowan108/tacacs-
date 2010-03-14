@@ -1,3 +1,14 @@
+tacacs+ (4.0.4.19-6) unstable; urgency=low
+  * Closes: #573766 (fix FTBFS)
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 14 Mar 2010 11:21:08 +0100
+
+tacacs+ (4.0.4.19-5) unstable; urgency=low
+  * Correct a typo in copyright file
+  * Add the path to the GPL3 license in copyright file
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 13 Mar 2010 12:03:33 +0100
+
 tacacs+ (4.0.4.19-4) unstable; urgency=low
   * Include do_auth.py in binary and correct copyright issue
   * Add a man page for do_auth

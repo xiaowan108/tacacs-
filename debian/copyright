@@ -33,4 +33,5 @@ As for the bits I have added or contributions I have received from other
 folks, they are noted in the CHANGES file post version 4.0.3a.  please
 give credit where due.  thanks.
 
-The file do_auth.py located under /usr/bin is under GPL3+.
+The file do_auth located under /usr/sbin is under GPL3+.
+The GPL3 license can be found under /usr/share/common-licenses/GPL-3.
