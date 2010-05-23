@@ -1,3 +1,8 @@
+tacacs+ (4.0.4.19-8) unstable; urgency=low
+  * Closes: #582334 (replace gethostbyname() with getaddrinfo())
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 23 May 2010 11:46:24 +0100
+
 tacacs+ (4.0.4.19-7) unstable; urgency=low
   * Closes: #580845 (fix logrotate init script reload issue)
 
