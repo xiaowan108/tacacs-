@@ -6,7 +6,7 @@
   missingok
   notifempty
   postrotate
- 	/etc/init.d/tacacs_plus reload > /dev/null
+ 	invoke-rc.d tacacs_plus reload > /dev/null
   endscript
 }
 

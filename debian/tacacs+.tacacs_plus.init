@@ -76,10 +76,15 @@ running() {
 
 start_server() {
 # Start the process using the wrapper
-        start-stop-daemon --start --quiet --pidfile $PIDFILE \
-               --exec $DAEMON -- $DAEMON_OPTS
-        errcode=$?
-	return $errcode
+    if check_config_quiet ; then
+         start-stop-daemon --start --quiet --pidfile $PIDFILE \
+                --exec $DAEMON -- $DAEMON_OPTS
+         errcode=$?
+         return $errcode
+    else
+         return $?
+    fi
+
 }
 
 stop_server() {
@@ -99,11 +104,25 @@ stop_server() {
 }
 
 reload_server() {
-    [ ! -f "$PIDFILE" ] && return 1
-    pid=`cat $PIDFILE` # This is the daemon's pid
-    # Send a SIGHUP
-    kill -1 $pid
-    return $?
+    if check_config_quiet ; then
+         [ ! -f "$PIDFILE" ] && return 1
+         pid=`cat $PIDFILE` # This is the daemon's pid
+         # Send a SIGHUP
+         kill -1 $pid
+         return $?
+    else
+         return $?
+    fi
+}
+
+check_config() {
+	$DAEMON -P $DAEMON_OPTS
+	return $?	
+}
+
+check_config_quiet() {
+	$DAEMON -P $DAEMON_OPTS >/dev/null 2>&1
+	return $?	
 }
 
 force_stop() {
@@ -215,9 +234,19 @@ case "$1" in
 		log_end_msg 1
 	fi
         ;;
+  check)
+	check_config
+	if [ X$? = "X0" ]
+	then
+		log_daemon_msg "Checking $DESC configuration files successful" "$NAME"
+	else
+		log_daemon_msg "Checking $DESC configuration files failed"
+		exit 1
+	fi
+	;;
   *)
-	N=/etc/init.d/$NAME
-	echo "Usage: $N {start|stop|force-stop|restart|force-reload|status}" >&2
+	N=/etc/init.d/tacacs_plus
+	echo "Usage: $N {start|stop|force-stop|restart|force-reload|status|check}" >&2
 	exit 1
 	;;
 esac
