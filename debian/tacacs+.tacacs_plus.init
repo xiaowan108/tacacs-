@@ -88,19 +88,8 @@ start_server() {
 }
 
 stop_server() {
-# Stop the process using the wrapper
-        if [ -z "$DAEMONUSER" ] ; then
-            killproc -p $PIDFILE $DAEMON
-            errcode=$?
-        else
-# if we are using a daemonuser then look for process that match
-            start-stop-daemon --stop --quiet --pidfile $PIDFILE \
-                        --user $DAEMONUSER \
-                        --exec $DAEMON
-            errcode=$?
-        fi
-
-	return $errcode
+    killproc -p $PIDFILE $DAEMON
+    return $?
 }
 
 reload_server() {

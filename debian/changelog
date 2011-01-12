@@ -1,3 +1,8 @@
+tacacs+ (4.0.4.19-10) unstable; urgency=low
+  * Closes: #609755 (ignore $DAEMONUSER in init script stop_server())
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Mon, 12 Jan 2011 21:07:51 +0100
+
 tacacs+ (4.0.4.19-9) unstable; urgency=low
   * Improve the init script: check the config on 
     start/reload (Thanks to Erik Wenzel)
