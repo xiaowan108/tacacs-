@@ -3,7 +3,7 @@ Section: net
 Priority: extra
 Maintainer: Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>
 Build-Depends: debhelper (>= 7), autotools-dev, flex, m4, bison, libwrap0-dev, libpam0g-dev, dpatch
-Standards-Version: 3.9.1
+Standards-Version: 3.9.2
 Homepage: http://www.shrubbery.net/tac_plus/
 
 Package: tacacs+

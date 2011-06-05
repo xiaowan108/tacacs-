@@ -36,17 +36,16 @@ build-stamp:  config.status
 
 clean: unpatch
 	dh_testdir
-	dh_testroot
 	rm -f build-stamp 
 
 	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -f config.sub config.guess users_guide debian/*.log debian/files
 
 	dh_prep
+	dh_clean
 
 install: build
 	dh_testdir
-	dh_testroot
 	dh_installdirs
 
 	$(MAKE) DESTDIR=$(CURDIR)/debian/tmp install
@@ -58,7 +57,6 @@ binary-indep: build install
 # Build architecture-dependent files here.
 binary-arch: build install
 	dh_testdir
-	dh_testroot
 	dh_installchangelogs CHANGES
 	dh_installdocs	
 	dh_installlogrotate

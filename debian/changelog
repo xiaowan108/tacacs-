@@ -1,3 +1,8 @@
+tacacs+ (4.0.4.19-11) unstable; urgency=low
+  * Correct one lintian error.
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Mon, 5 Jun 2011 17:53:51 +0100
+
 tacacs+ (4.0.4.19-10) unstable; urgency=low
   * Closes: #609755 (ignore $DAEMONUSER in init script stop_server())
 
