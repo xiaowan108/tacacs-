@@ -1,1 +1,4 @@
 tacacs+: non-standard-file-perm etc/tacacs+/tac_plus.conf 0600 != 0644
+tacacs+: postrm-contains-additional-updaterc.d-calls etc/init.d/tacacs
+tacacs+: script-in-etc-init.d-not-registered-via-update-rc.d etc/init.d/tacacs_plus
+
