@@ -10,7 +10,7 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 include /usr/share/dpkg/buildflags.mk
 
 %:
-	dh $@  --with autotools-dev quilt
+	dh $@ --with autotools-dev,quilt
 
 
 

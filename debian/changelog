@@ -1,3 +1,8 @@
+tacacs+ (4.0.4.26-2) unstable; urgency=low
+  * Fixing an FTBFS due to dh --with option bad usage in rules file.
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Tue, 21 Aug 2012 18:21:51 +0100
+
 tacacs+ (4.0.4.26-1) unstable; urgency=low
   * New upstream version.
   * Added 2 lintian overrides for errors 
