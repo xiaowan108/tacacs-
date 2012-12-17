@@ -1,3 +1,9 @@
+tacacs+ (4.0.4.26-3) unstable; urgency=low
+  * Closes: #693089 missing reload action in init.d script usage output.
+  * Closes: #693598 multi-arch misusage.
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Mon, 17 Dec 2012 18:10:51 +0100
+
 tacacs+ (4.0.4.26-2) unstable; urgency=low
   * Fixing an FTBFS due to dh --with option bad usage in rules file.
 

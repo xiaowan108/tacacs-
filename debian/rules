@@ -12,8 +12,6 @@ include /usr/share/dpkg/buildflags.mk
 %:
 	dh $@ --with autotools-dev,quilt
 
-
-
 override_dh_auto_install:
 	dh_installdirs
 	dh_installinit --name=tacacs_plus
@@ -22,9 +20,10 @@ override_dh_auto_install:
 	install -m 600 debian/tac_plus.conf $(CURDIR)/debian/tacacs+/etc/tacacs+
 	install -m 755 do_auth.py $(CURDIR)/debian/tacacs+/usr/sbin/do_auth
 	install -m 644 debian/do_auth.8 $(CURDIR)/debian/tacacs+/usr/share/man/man8
+	chrpath -c $(CURDIR)/debian/tmp/usr/sbin/tac_plus
 
 override_dh_auto_configure:
-	dh_auto_configure -- --prefix=/usr --bindir=\$${prefix}/sbin --mandir=\$${prefix}/share/man --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)\
+	dh_auto_configure -- --prefix=/usr --bindir=\$${prefix}/sbin --mandir=\$${prefix}/share/man --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)/tacacs\
                 --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" $(shell dpkg-buildflags --export=configure)\
                 --enable-acls --enable-uenable --enable-maxsess --enable-finger
 

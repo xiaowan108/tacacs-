@@ -1,2 +1,2 @@
 usr/include/*
-usr/lib/*/libtacacs*.so
+usr/lib/*/tacacs/libtacacs*.so
