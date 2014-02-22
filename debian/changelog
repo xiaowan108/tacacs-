@@ -1,3 +1,9 @@
+tacacs+ (4.0.4.27a-1) unstable; urgency=low
+  * Closes: #714908 incorrect var substitute in multiarch.
+  * New upstream release
+
+ -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Sat, 22 Feb 2014 18:10:51 +0100
+
 tacacs+ (4.0.4.26-3) unstable; urgency=low
   * Closes: #693089 missing reload action in init.d script usage output.
   * Closes: #693598 multi-arch misusage.
