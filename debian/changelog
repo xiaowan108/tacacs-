@@ -1,83 +1,130 @@
+tacacs+ (4.0.4.27a-3) unstable; urgency=medium
+
+  * QA upload.
+  * Run the chmod only in arch-dependant builds.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 27 Sep 2016 23:12:28 +0000
+
+tacacs+ (4.0.4.27a-2) unstable; urgency=medium
+
+  * QA upload.
+  * Orphan the package, see #838701.
+  * Run wrap-and-sort -ast.
+  * Remove explicit usage of quit, dpkg handles it itself with source format
+    3.0 (quilt).
+  * Add Vcs-* fields pointing to a collab-maint git repository.
+  * Stop using hardening-wrapper: the package is already making use of
+    dpkg-buildflags.  Closes: #836658
+  * Simplify configure call by removing options already passed by
+    dh_auto_configure.
+  * Build-depend on debhelper (>= 9.20160115) to make sure
+    dh_update_autotools_config is called, instead of using the external
+    autotools-dev addon.
+  * Use a more declarative way to install the files.  Closes: #806114
+  * Bump Standards-Version to 3.9.8, no changes needed.
+  * Make the main configuration file non-readable by default, as originally
+    intended.
+  * Update lintian overrides.
+  * Add patch so that the build system obeys to CPPFLAGS too.
+  * Fix lintian tag duplicate-short-description.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 27 Sep 2016 19:50:51 +0000
+
 tacacs+ (4.0.4.27a-1) unstable; urgency=low
+
   * Closes: #714908 incorrect var substitute in multiarch.
   * New upstream release
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Sat, 22 Feb 2014 18:10:51 +0100
 
 tacacs+ (4.0.4.26-3) unstable; urgency=low
+
   * Closes: #693089 missing reload action in init.d script usage output.
   * Closes: #693598 multi-arch misusage.
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Mon, 17 Dec 2012 18:10:51 +0100
 
 tacacs+ (4.0.4.26-2) unstable; urgency=low
+
   * Fixing an FTBFS due to dh --with option bad usage in rules file.
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Tue, 21 Aug 2012 18:21:51 +0100
 
 tacacs+ (4.0.4.26-1) unstable; urgency=low
+
   * New upstream version.
-  * Added 2 lintian overrides for errors 
+  * Added 2 lintian overrides for errors
     related to init script (false positive).
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Sat, 14 Jul 2012 14:30:51 +0100
 
 tacacs+ (4.0.4.25-1) unstable; urgency=low
+
   * New upstream version - Closes: #664395
   * Fix Hurd FTBFS (Closes: #675099 thanks to Barry deFreese).
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Sat, 2 Jun 2012 14:18:51 +0100
 
 tacacs+ (4.0.4.19-11) unstable; urgency=low
+
   * Correct one lintian error.
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Mon, 5 Jun 2011 17:53:51 +0100
 
 tacacs+ (4.0.4.19-10) unstable; urgency=low
+
   * Closes: #609755 (ignore $DAEMONUSER in init script stop_server())
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Mon, 12 Jan 2011 21:07:51 +0100
 
 tacacs+ (4.0.4.19-9) unstable; urgency=low
-  * Improve the init script: check the config on 
+
+  * Improve the init script: check the config on
     start/reload (Thanks to Erik Wenzel)
   * Use the debian way to restart daemons in logrotate scripts (Erik Wenzel too)
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Mon, 18 Oct 2010 21:30:51 +0100
 
 tacacs+ (4.0.4.19-8) unstable; urgency=low
+
   * Closes: #582334 (replace gethostbyname() with getaddrinfo())
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 23 May 2010 11:46:24 +0100
 
 tacacs+ (4.0.4.19-7) unstable; urgency=low
+
   * Closes: #580845 (fix logrotate init script reload issue)
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 09 May 2010 13:23:15 +0100
 
 tacacs+ (4.0.4.19-6) unstable; urgency=low
+
   * Closes: #573766 (fix FTBFS)
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 14 Mar 2010 11:21:08 +0100
 
 tacacs+ (4.0.4.19-5) unstable; urgency=low
+
   * Correct a typo in copyright file
   * Add the path to the GPL3 license in copyright file
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 13 Mar 2010 12:03:33 +0100
 
 tacacs+ (4.0.4.19-4) unstable; urgency=low
+
   * Include do_auth.py in binary and correct copyright issue
   * Add a man page for do_auth
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 22 Feb 2010 22:55:42 +0100
 
 tacacs+ (4.0.4.19-3) unstable; urgency=low
+
   * Remove bad group/owner from the logrotate file
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 14 Feb 2010 20:19:14 +0100
 
 tacacs+ (4.0.4.19-2) unstable; urgency=low
+
   * Correct an error in the logrotate file
 
  -- Henry-Nicolas Tourneur <henry.nicolas@tourneur.be>  Thu, 11 Feb 2010 19:06:14 +0100
@@ -87,9 +134,9 @@ tacacs+ (4.0.4.19-1) unstable; urgency=low
   * Patches:
     - fix_man : Correct a man page error about a date
   * 2 lintian overwrites:
-    - package-name-doesnt-match-sonames : because the so file 
+    - package-name-doesnt-match-sonames : because the so file
       is named libtacacs.so but the software name is tacacs+ and not tacacs.
-    - non-standard-file-perm : because the main configuration 
+    - non-standard-file-perm : because the main configuration
       file holds the tacacs+ key, it shouldn't be world readable.
   * Initial release (Closes: #568161)
 

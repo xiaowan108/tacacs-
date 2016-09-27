@@ -1,32 +1,22 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
 
-export DH_OPTIONS
-export DEB_BUILD_HARDENING=1
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-DPKG_EXPORT_BUILDFLAGS = 1
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
-include /usr/share/dpkg/buildflags.mk
-
 %:
-	dh $@ --with autotools-dev,quilt
+	dh $@
 
-override_dh_auto_install:
-	dh_installdirs
+override_dh_installinit:
 	dh_installinit --name=tacacs_plus
-	dh_auto_install
-	install -m 644 debian/tacacs+.default $(CURDIR)/debian/tacacs+/etc/default/tacacs+
-	install -m 600 debian/tac_plus.conf $(CURDIR)/debian/tacacs+/etc/tacacs+
-	install -m 755 do_auth.py $(CURDIR)/debian/tacacs+/usr/sbin/do_auth
-	install -m 644 debian/do_auth.8 $(CURDIR)/debian/tacacs+/usr/share/man/man8
-	chrpath -c $(CURDIR)/debian/tmp/usr/sbin/tac_plus
+
+override_dh_install-arch:
+	dh_install -a
+	chrpath -c $(CURDIR)/debian/tacacs+/usr/sbin/tac_plus
+
+override_dh_fixperms-arch:
+	dh_fixperms -a
+	chmod -v 600 $(CURDIR)/debian/tacacs+/etc/tacacs+/tac_plus.conf
 
 override_dh_auto_configure:
-	dh_auto_configure -- --prefix=/usr --bindir=\$${prefix}/sbin --mandir=\$${prefix}/share/man --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)/tacacs\
-                --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" $(shell dpkg-buildflags --export=configure)\
+	dh_auto_configure -- --bindir=\$${prefix}/sbin --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)/tacacs\
                 --enable-acls --enable-uenable --enable-maxsess --enable-finger
-
-override_dh_clean:
-	dh_clean
-	rm -f users_guide config.guess.dh-orig config.sub.dh-orig 2> /dev/null
